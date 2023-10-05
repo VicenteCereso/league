@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<div class="container">
+    <form [formGroup]="editForm" (ngSubmit)="postForm()">
+        <div class="form-group row">
+            <div class="col">
+                <label for="edit">Id</label>
+                <input type="text" class="form-control" placeholder="Id" formControlName="id">    
+            </div>
+            <div class="col">
+                <label for="edit">Nombres</label>
+                <input type="text" class="form-control" placeholder="Nombres del usuario" id="nombres" formControlName="nombres">    
+            </div>                       
+        
+            <div class="col">
+                <label for="edit">Apellidos</label>
+                <input type="text" class="form-control" placeholder="Apellidos del usuario" formControlName="apellidos">
+            </div>
+            <div class="col">
+                <label for="edit">Email</label>
+                <input type="email" class="form-control" placeholder="Email" formControlName="email">
+            </div>
+        </div>
+      
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-danger" (click)="deleteUser()">Eliminar</button>
+        
+        
+    </form>
+
+</div>
+<app-footer></app-footer>
