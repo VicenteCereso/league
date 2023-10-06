@@ -12,6 +12,10 @@ import { UserComponent } from './views/user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { TeamComponent } from './views/team/team.component';
+import { PlayerComponent } from './views/player/player.component';
+import { EditComponent } from './views/edit/edit.component';
+import { EditTeamComponent } from './views/team/edit-team/edit-team.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { ToastrModule } from 'ngx-toastr';
     HeaderComponent,
     FooterComponent,
     routingComponent,
-    UserComponent
+    UserComponent,
+    TeamComponent,
+    PlayerComponent,
+    EditComponent,
+    EditTeamComponent
   ],
   imports: [
     BrowserModule,
