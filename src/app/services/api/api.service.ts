@@ -11,7 +11,8 @@ import { TeamI } from 'src/app/models/team.interface';
 })
 export class ApiService {
 // https://pokeapi.co/api/v2/pokemon/
-  url:string= "http://localhost:8080/tech";
+  //url:string= "http://localhost:8080/tech";
+  url:string = "https://localhost:7182";
 
   constructor(private http:HttpClient) { }
 
@@ -80,7 +81,15 @@ export class ApiService {
   }
 
   getAllTeams():Observable<TeamI[]>{
-    let direccion = this.url+"/equipo";
+    let direccion = this.url+"/team/getAll";
+    let Options = {
+      headers:new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        //'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+        'Conten-type':'application/json'
+      }),
+      //body: form
+    }
     return this.http.get<TeamI[]>(direccion);
   }
 
