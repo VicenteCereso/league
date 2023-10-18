@@ -1,0 +1,40 @@
+<app-header></app-header>
+
+<div class="container">
+    <form [formGroup]="editForm" (ngSubmit)="postForm()">
+        <div class="form-group row">
+            <div class="col">
+                <label for="edit">IdPlayer</label>
+                <input type="text" class="form-control" placeholder="IdPlayer" formControlName="idPlayer">    
+            </div>
+            <div class="col">
+                <label for="edit">Nombres</label>
+                <input type="text" class="form-control" placeholder="Nombres" id="nombres" formControlName="names">    
+            </div>                       
+        
+            <div class="col">
+                <label for="edit">Apellidos</label>
+                <input type="text" class="form-control" placeholder="Apellidos" formControlName="lastNames">
+            </div>
+            <div class="col">
+                <label for="edit">Identificación</label>
+                <input type="text" class="form-control" placeholder="Identificación" formControlName="identification">
+            </div>
+            <div class="col">
+                <label for="edit">Fecha de Nacimiento</label>
+                <input type="text" class="form-control" placeholder="Fecha de Nacimiento" formControlName="dateBirthday">
+            </div>
+            <div class="col">
+                <label for="edit">N° Camiseta</label>
+                <input type="text" class="form-control" placeholder="#" formControlName="numberShirt">
+            </div>
+        </div>
+      
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-danger" >Eliminar</button>
+        
+        
+    </form>
+
+</div>
+<app-footer></app-footer>

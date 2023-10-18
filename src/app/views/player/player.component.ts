@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { PlayerI } from 'src/app/models/player.interface';
+import { Player } from 'src/app/models/player';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -10,14 +10,12 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent {
-  players:PlayerI[];
+  public players:Player[]=[];
+
   constructor(private api:ApiService, private router:Router){ }
   ngOnInit(): void {
     this.api.getAllPlayers().subscribe(datos=>{
       this.players=datos;
-      
-    
-      //console.log(datos);
     },
     (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
@@ -26,5 +24,10 @@ export class PlayerComponent {
         console.log("Server-side error: "+err.error.message);
       }
     })
+  }
+
+  editPlayer(editPlayer: any){
+    console.log("team id-> "+editPlayer);
+    this.router.navigate(['editPlayer',editPlayer]);
   }
 }

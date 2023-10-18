@@ -7,7 +7,7 @@ import { EditComponent } from './views/edit/edit.component';
 import {PlayerComponent} from './views/player/player.component';
 import {TeamComponent} from './views/team/team.component';
 import{EditTeamComponent} from './views/team/edit-team/edit-team.component';
-
+import{EditPlayerComponent} from './views/player/edit-player/edit-player.component';
 
 
 const routes: Routes = [
@@ -18,8 +18,8 @@ const routes: Routes = [
   {path:'edit/:id',component:EditComponent},
   {path:'player',component:PlayerComponent},
   {path:'team',component:TeamComponent},
-  {path:'editTeam/:id', component:EditTeamComponent}
-  
+  {path:'editTeam/:idTeam', component:EditTeamComponent},
+  {path:'editPlayer/:idPlayer', component:EditPlayerComponent}
 ];
 
 @NgModule({
@@ -27,4 +27,13 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponent=[LoginComponent,DashboardComponent,NewComponent,EditComponent,PlayerComponent,TeamComponent,EditTeamComponent]
+export const routingComponent=[
+  LoginComponent,
+  DashboardComponent,
+  NewComponent,
+  EditComponent,
+  PlayerComponent,
+  TeamComponent,
+  EditTeamComponent,
+  EditPlayerComponent
+]

@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TeamI } from 'src/app/models/team.interface';
+import { Team } from 'src/app/models/team';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -13,25 +13,25 @@ import { ApiService } from 'src/app/services/api/api.service';
 export class EditTeamComponent implements OnInit{
   constructor(private activeRouter:ActivatedRoute, private router:Router, private api:ApiService){}
 
-  dataTeam: TeamI;
+  dataTeam: Team;
 
   editForm = new FormGroup({
-    id : new FormControl(''),
-    nombre : new FormControl(''),
-    foto : new FormControl(''),
+    idTeam : new FormControl(0),
+    name : new FormControl(''),
+    image : new FormControl(''),
     logo : new FormControl('')
   });
 
 
   ngOnInit(): void {
-    let teamId = this.activeRouter.snapshot.paramMap.get('id');
+    let teamId = this.activeRouter.snapshot.paramMap.get('idTeam');
     this.api.getSingleTeam(teamId).subscribe(data=> {
-      this.dataTeam = data;
+      //this.dataTeam = data[0];
       this.editForm.setValue({
-        'id':this.dataTeam.id,
-        'nombre':this.dataTeam.nombre,
-        'foto':this.dataTeam.foto,
-        'logo': this.dataTeam.logo
+        idTeam:data[0].idTeam,
+        'name':data[0].name,
+        'image':data[0].image,
+        'logo': data[0].logo
         
       }),
       (err: HttpErrorResponse) => {
@@ -44,21 +44,8 @@ export class EditTeamComponent implements OnInit{
     })
   }
   postForm(){
-    /*this.dataUser.id = this.editForm.controls['id'].value;
-    this.dataUser.nombres = this.editForm.controls['nombres'].value;
-    this.dataUser.apellidos = this.editForm.controls['apellidos'].value;
-    this.dataUser.email = this.editForm.controls['email'].value;*/
-    //this.dataUser=this.setUser();
     this.setTeam();
     this.api.getUpdateTeam(this.dataTeam).subscribe(data=>{
-     /* let response:ResponseI = data;
-      
-      if(response.status =="ok"){
-        this.alerts.showSucess('Datos modificados','Hecho')
-      }else{
-        console.log(response);
-        this.alerts.showError('','Error');
-      }*/
       console.log(data);
     },
       (err: HttpErrorResponse) => {
@@ -82,10 +69,10 @@ export class EditTeamComponent implements OnInit{
     });
   }
 
-  setTeam():TeamI{
-    this.dataTeam.id = this.editForm.controls['id'].value;
-    this.dataTeam.nombre = this.editForm.controls['nombre'].value;
-    this.dataTeam.foto = this.editForm.controls['foto'].value;
+  setTeam():Team{
+    this.dataTeam.idTeam = this.editForm.controls['idTeam'].value;
+    this.dataTeam.name = this.editForm.controls['name'].value;
+    this.dataTeam.image = this.editForm.controls['image'].value;
     this.dataTeam.logo = this.editForm.controls['logo'].value;
     return this.dataTeam;
   }

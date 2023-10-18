@@ -16,6 +16,8 @@ import { TeamComponent } from './views/team/team.component';
 import { PlayerComponent } from './views/player/player.component';
 import { EditComponent } from './views/edit/edit.component';
 import { EditTeamComponent } from './views/team/edit-team/edit-team.component';
+import { EditPlayerComponent } from './views/player/edit-player/edit-player.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { EditTeamComponent } from './views/team/edit-team/edit-team.component';
     TeamComponent,
     PlayerComponent,
     EditComponent,
-    EditTeamComponent
+    EditTeamComponent,
+    EditPlayerComponent
   ],
   imports: [
     BrowserModule,

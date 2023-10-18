@@ -14,14 +14,14 @@
         <th scope="col">N° Camiseta</th>
       </tr>
     </thead>
-    <tbody><!--(click)="editUser(usuario.id)-->
-      <tr *ngFor="let player of players">
-        <th scope="row">{{player.id}}</th>
-        <td>{{player.nombres}}</td>
-        <td>{{player.apellidos}}</td>
-        <td>{{player.identificacion}}</td>
-        <td>{{player.fechaNacimiento}}</td>
-        <td>{{player.numeroCamiseta}}</td>
+    <tbody><!---->
+      <tr *ngFor="let player of players" (click)="editPlayer(player.idPlayer)" >
+        <th scope="row">{{player.idPlayer}}</th>
+        <td>{{player.names}}</td>
+        <td>{{player.lastNames}}</td>
+        <td>{{player.identification}}</td>
+        <td>{{player.dateBirthday}}</td>
+        <td>{{player.numberShirt}}</td>
       </tr>
 
     </tbody>

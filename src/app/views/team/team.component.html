@@ -13,10 +13,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let team of teams" (click)="editTeam(team.id)">
-        <th scope="row">{{team.id}}</th>
-        <td>{{team.nombre}}</td>
-        <td>{{team.foto}}</td>
+      <tr *ngFor="let team of teams" (click)="editTeam(team.idTeam)">
+        <th scope="row">{{team.idTeam}}</th>
+        <td>{{team.name}}</td>
+        <td>{{team.image}}</td>
         <td>{{team.logo}}</td>
 
       </tr>

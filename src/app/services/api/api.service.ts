@@ -4,21 +4,25 @@ import {UserI} from '../../models/user.interface';
 import {ResponseI} from '../../models/response.interface';
 import {HttpClient,HttpHeaders} from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { PlayerI } from 'src/app/models/player.interface';
-import { TeamI } from 'src/app/models/team.interface';
+import { Player } from 'src/app/models/player';
+import { Team } from 'src/app/models/team';
+import { map } from 'rxjs';
+import { ReqResResponse } from 'src/app/models/ReqResResponse';
+interface response{results:Team[]}
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+  
 // https://pokeapi.co/api/v2/pokemon/
   //url:string= "http://localhost:8080/tech";
   url:string = "https://localhost:7182";
 
   constructor(private http:HttpClient) { }
-
+ 
   getAllUsers():Observable<UserI[]>{
     let direccion = this.url+"/users";
-    return this.http.get<UserI[]>(direccion);
+    return this.http.get<UserI[]>(direccion); 
   }
 
   getSingleUser(id: any):Observable<UserI>{
@@ -49,27 +53,39 @@ export class ApiService {
     return this.http.post<ResponseI>(direccion,form);
   }
 
-  getAllPlayers():Observable<PlayerI[]>{
-    let direccion = this.url+"/jugador";
-    return this.http.get<PlayerI[]>(direccion);
+  getAllPlayers(){
+    let direccion = this.url+"/player/getAllPlayers";
+    return this.http.get<ReqResResponse>(direccion)
+    .pipe(
+      map(resp=>{
+        console.log(resp);
+        return resp.response.map(playerR=>Player.playerForJson(playerR));
+      })
+    )
   }
 
-  getSinglePlayer(id: any):Observable<PlayerI>{
-    let direccion = this.url+"/jugador/jugador/"+id
-    return this.http.get<PlayerI>(direccion);
+  getSinglePlayer(idPlayer: string){
+    let direccion = this.url+"/player/getSinglePlayer?idPlayer="+idPlayer;
+    return this.http.get<ReqResResponse>(direccion)
+    .pipe(
+      map(resp=>{
+        console.log(resp);
+        return resp.response.map(playerR=>Player.playerForJson(playerR));
+      })
+    )
   }
 
-  getUpdatePlayer(form: PlayerI):Observable<ResponseI>{
-    let direccion = this.url+"/jugador/edit/"+form.id;
+  getUpdatePlayer(form: Player):Observable<ResponseI>{
+    let direccion = this.url+"/jugador/edit/"+form.idPlayer;
     return this.http.put<ResponseI>(direccion,form);
   }
 
-  createPlayer(form:PlayerI):Observable<ResponseI>{
+  createPlayer(form:Player):Observable<ResponseI>{
     let direccion = this.url+"/jugador/create";
     return this.http.post<ResponseI>(direccion,form);
   }
 
-  deletePlayer(form:PlayerI):Observable<ResponseI>{
+  deletePlayer(form:Player):Observable<ResponseI>{
     let direccion = this.url+"/jugador/delete";
     let Options = {
       headers:new HttpHeaders({
@@ -80,35 +96,44 @@ export class ApiService {
     return this.http.delete<ResponseI>(direccion,Options);
   }
 
-  getAllTeams():Observable<TeamI[]>{
-    let direccion = this.url+"/team/getAll";
-    let Options = {
-      headers:new HttpHeaders({
-        'Access-Control-Allow-Origin': '*',
-        //'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-        'Conten-type':'application/json'
-      }),
-      //body: form
-    }
-    return this.http.get<TeamI[]>(direccion);
+  getAllTeams(){
+    let direccion = this.url+"/team/getAll";    
+    return this.http.get<ReqResResponse>(direccion)
+    .pipe(
+      map(resp=>{
+        console.log(resp);
+        return resp.response.map(teamR=>Team.teamForJson(teamR));
+      })
+    )
   }
 
-  getSingleTeam(id: any):Observable<TeamI>{
-    let direccion = this.url+"/equipo/equipo/"+id
-    return this.http.get<TeamI>(direccion);
+  getSingleTeam(idTeam: string){
+    //let direccion = this.url+"/equipo/equipo/"+idTeam
+    let direccion = this.url+"/team/getSingleTeam?idTeam="+idTeam;
+    console.log(this.http.get<Team>(direccion));
+    //return this.http.get<Team>(direccion);
+
+    return this.http.get<ReqResResponse>(direccion)
+    .pipe(
+      map(resp=>{
+        console.log(resp);
+        return resp.response.map(teamR=>Team.teamForJson(teamR));
+      })
+    )
+
   }
 
-  getUpdateTeam(form: TeamI):Observable<ResponseI>{
-    let direccion = this.url+"/equipo/edit/"+form.id;
+  getUpdateTeam(form: Team):Observable<ResponseI>{
+    let direccion = this.url+"/equipo/edit/"+form.idTeam;
     return this.http.put<ResponseI>(direccion,form);
   }
 
-  createTeam(form:TeamI):Observable<ResponseI>{
+  createTeam(form:Team):Observable<ResponseI>{
     let direccion = this.url+"/equipo/create";
     return this.http.post<ResponseI>(direccion,form);
   }
 
-  deleteTeam(form:TeamI):Observable<ResponseI>{
+  deleteTeam(form:Team):Observable<ResponseI>{
     let direccion = this.url+"/equipo/delete";
     let Options = {
       headers:new HttpHeaders({
