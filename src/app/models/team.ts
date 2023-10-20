@@ -3,17 +3,17 @@ export class Team{
     static teamForJson(obj:Object){
         return new Team(
         obj['idTeam'],
-        obj['name'],
-        obj['image'],
+        obj['nameTeam'],
+        obj['imageTeam'],
         obj['logo'],
         );
     }
 
     constructor(
         public idTeam:number,
-        public name: string,
-        public image: string,
-        public logo: string,
+        public nameTeam: string,
+        public imageTeam: ImageBitmap,
+        public logo: ImageBitmap,
     ){}
 
 }

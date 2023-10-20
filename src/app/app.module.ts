@@ -17,6 +17,8 @@ import { PlayerComponent } from './views/player/player.component';
 import { EditComponent } from './views/edit/edit.component';
 import { EditTeamComponent } from './views/team/edit-team/edit-team.component';
 import { EditPlayerComponent } from './views/player/edit-player/edit-player.component';
+import { CreateComponent } from './views/player/create/create.component';
+import { CreateTeamComponent } from './views/team/create-team/create-team.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { EditPlayerComponent } from './views/player/edit-player/edit-player.comp
     PlayerComponent,
     EditComponent,
     EditTeamComponent,
-    EditPlayerComponent
+    EditPlayerComponent,
+    CreateComponent,
+    CreateTeamComponent
   ],
   imports: [
     BrowserModule,

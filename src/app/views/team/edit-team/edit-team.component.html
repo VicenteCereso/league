@@ -9,13 +9,14 @@
             </div>
             <div class="col">
                 <label for="edit">Nombre del Equipo</label>
-                <input type="text" class="form-control" placeholder="Nombre del Equipo" id="nombres" formControlName="name">    
+                <input type="text" class="form-control" placeholder="Nombre del Equipo" id="nombres" formControlName="nameTeam">    
             </div>                       
         
             <div class="col">
                 <label for="edit">Foto</label>
-                <img [src]="" />
-                <input type="text" class="form-control" placeholder="Imagen" formControlName="image">
+                <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput/>
+                <img [src]="photoSelected || 'assets/no-image.png'" class="img-fluid" alt="No Image" (click)="photoInput.click()">
+                <!--input type="text" class="form-control" placeholder="Imagen" formControlName="image"-->
             </div>
             <div class="col">
                 <label for="edit">Logo</label>

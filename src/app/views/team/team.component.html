@@ -15,8 +15,10 @@
     <tbody>
       <tr *ngFor="let team of teams" (click)="editTeam(team.idTeam)">
         <th scope="row">{{team.idTeam}}</th>
-        <td>{{team.name}}</td>
-        <td>{{team.image}}</td>
+        <td>{{team.nameTeam}}</td>
+        <td>
+          <img src="" />
+          {{team.imageTeam}}</td>
         <td>{{team.logo}}</td>
 
       </tr>

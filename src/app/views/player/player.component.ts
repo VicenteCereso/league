@@ -30,4 +30,9 @@ export class PlayerComponent {
     console.log("team id-> "+editPlayer);
     this.router.navigate(['editPlayer',editPlayer]);
   }
+
+  newPlayer(){
+    console.log("yendo a crear");
+    this.router.navigate(['playerCreate']);
+  }
 }

@@ -81,7 +81,7 @@ export class ApiService {
   }
 
   createPlayer(form:Player):Observable<ResponseI>{
-    let direccion = this.url+"/jugador/create";
+    let direccion = this.url+"/player/savePlayer";
     return this.http.post<ResponseI>(direccion,form);
   }
 
