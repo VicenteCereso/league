@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
   newUser(){
     this.router.navigate(['new']);
   }
-  editUser(id: any){
-    this.router.navigate(['edit',id]);
+  editUser(idTeam: any){
+    this.router.navigate(['edit',idTeam]);
   }
 }

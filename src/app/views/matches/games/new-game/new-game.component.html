@@ -1,0 +1,61 @@
+<app-header></app-header>
+<div class="container">
+    <form [formGroup]="newForm" (ngSubmit)="postForm()">
+        <div class="grid">
+            <div class="col-6">
+                <div class="col-12 md:col-8 lg:col-4">
+                    <div class="grid">                        
+                        <label class="col-12 md:col-2 title-label">Equipo Local</label>
+                        <div class="col-12 md:col-4">
+                            
+                            <select class="form-control" formControlName="idTeamL" (change)="deleteOption($event, select)" #select #teamLSelected>
+                                <option *ngFor="let teamL of teamsL" value="teamL.idTeam" [ngValue]="teamL.idTeam"  selected="teamL.idTeam === idTeamL">
+                                    {{ teamL.idTeam }} {{ teamL.nameTeam }}
+                                </option>
+                              </select>
+                        </div>
+        
+                        <label class="col-12 md:col-2 title-label">Equipo Visitante</label>
+                        <div class="col-12 md:col-4">
+                            
+                            <select class="form-control" formControlName="idTeamV">
+                                <option *ngFor="let teamV of teamsV" value="teamV.idTeam" [ngValue]="teamV.idTeam" selected="teamV.idTeam === idTeamV">
+                                    {{ teamV.idTeam }} {{ teamV.nameTeam }}
+                                </option>
+                              </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 md:col-6 lg:col-4">
+                    <div class="grid">
+                        <label class="col-12 md:col-2 title-label">Fecha de Encuentro</label>
+                        <div class="col-12 md:col-4">
+                            <input type="date" class="form-control" formControlName="dateGames">
+                        </div>
+                        <label class="col-12 md:col-2 title-label">Horario</label>
+                        <div class="col-12 md:col-4">
+                            
+                            <select class="form-control" formControlName="idSchedules">
+                                <option *ngFor="let schedule of schedules" [ngValue]="schedule.idSchedules" selected="schedule.idSchedules === idSchedules">
+                                    {{ schedule.timeInit.substr(11,17) }} - {{ schedule.timeFinish.substr(11,17) }}
+                                </option>
+                              </select>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+        </div>
+        
+        <div class="col-4">
+            <div class="d-grid gap-2 d-md-block">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-dark" (click)="back()">Regresar</button>
+                <!--button type="button" class="btn btn-danger">Eliminar</button-->
+            </div>
+        </div>
+     
+    </form>
+
+</div>
+<app-footer></app-footer>

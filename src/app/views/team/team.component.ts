@@ -1,8 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TeamI } from 'src/app/models/team.interface';
+import { Team } from 'src/app/models/team';
 import { ApiService } from 'src/app/services/api/api.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-team',
@@ -10,12 +11,13 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit{
-  teams:TeamI[];
+  public teams:Team[]=[];
   constructor(private api:ApiService, private router:Router){ }
   ngOnInit(): void {
-    this.api.getAllTeams().subscribe(datos=>{
-      this.teams=datos;
-      console.log(datos);
+    this.api.getAllTeams()
+    .subscribe(teamsRes=>{
+      console.log(teamsRes);
+      this.teams=teamsRes;
     },
     (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
@@ -23,11 +25,15 @@ export class TeamComponent implements OnInit{
       } else {
         console.log("Server-side error: "+err.error.message);
       }
-    })
+    });
   }
 
-  editTeam(id: any){
-    console.log("team id-> "+id);
-    this.router.navigate(['editTeam',id]);
+  editTeam(editTeam: any){
+    console.log("team id-> "+editTeam);
+    this.router.navigate(['editTeam',editTeam]);
+  }
+
+  createTeam(){
+    this.router.navigate(['teamCreate']);
   }
 }

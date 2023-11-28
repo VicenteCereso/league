@@ -4,21 +4,23 @@
     <form [formGroup]="editForm" (ngSubmit)="postForm()">
         <div class="form-group row">
             <div class="col">
-                <label for="edit">Id</label>
-                <input type="text" class="form-control" placeholder="Id" formControlName="id">    
+                <label for="edit">IdTeam</label>
+                <input type="text" class="form-control" placeholder="IdTeam" formControlName="idTeam">    
             </div>
             <div class="col">
                 <label for="edit">Nombre del Equipo</label>
-                <input type="text" class="form-control" placeholder="Nombres del usuario" id="nombres" formControlName="nombre">    
+                <input type="text" class="form-control" placeholder="Nombre del Equipo" id="nombres" formControlName="nameTeam">    
             </div>                       
         
             <div class="col">
                 <label for="edit">Foto</label>
-                <input type="text" class="form-control" placeholder="Apellidos del usuario" formControlName="foto">
+                <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput/>
+                <img [src]="photoSelected || 'assets/no-image.png'" class="img-fluid" alt="No Image" (click)="photoInput.click()">
+                <!--input type="text" class="form-control" placeholder="Imagen" formControlName="image"-->
             </div>
             <div class="col">
                 <label for="edit">Logo</label>
-                <input type="email" class="form-control" placeholder="Email" formControlName="logo">
+                <input type="email" class="form-control" placeholder="Logo" formControlName="logo">
             </div>
         </div>
       

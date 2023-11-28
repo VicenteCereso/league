@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+<div class="container">
+	<form ng-form [formGroup]="newForm" (ngSubmit)="postFormPlayer()">
+		<div class="form-group row">
+			<!--div class="col">
+				<label for="newForm">Id</label>
+				<input type="number" class="form-control" placeholder="Id" formControlName="idPlayer">
+			</div-->
+			<div class="col-12">
+				<div class="col-6 lg:col-4">
+					<div class="col">
+						<label for="new">Nombres</label>
+						<input type="text" class="form-control" placeholder="Nombres" id="names" formControlName="names" OnlyAlphabetic="true">
+					</div>
+					<div *ngIf="canShowErrors('names')">
+						<p text="Los Nombres son requeridos" *ngIf="newForm.controls['names'] && newForm.controls['names'].errors['required']"></p>
+						<p text="Solo debe ingresar letras sin tildes" *ngIf="newForm.controls['names'] && newForm.controls['names'].errors['pattern']"></p>
+						<p text="Debe tener m&aacute;ximo 50 caracteres" *ngIf="newForm.controls['names'] && newForm.controls['names'].errors['maxlength']"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col">
+				<label for="new">Apellidos</label>
+				<input type="text" class="form-control" placeholder="Apellidos" id="lastNames" formControlName="lastNames" OnlyAlphabetic="true">
+			</div>
+			<div *ngIf="canShowErrors('lastNames')">
+				<p severity="error" text="Los Apellidos son requeridos" *ngIf="newForm.controls['lastNames'] && newForm.controls['lastNames'].errors['required']"></p>
+				<p severity="error" text="Solo debe ingresar letras sin tildes" *ngIf="newForm.controls['lastNames'] && newForm.controls['lastNames'].errors['pattern']"></p>
+				<p severity="error" text="Debe tener m&aacute;ximo 50 caracteres" *ngIf="newForm.controls['lastNames'] && newForm.controls['lastNames'].errors['maxlength']"></p>
+			</div>
+			<div class="col">
+				<label for="new">Identificación</label>
+				<input type="text" class="form-control" placeholder="Identificación" formControlName="identification" [attr.maxlength]="maxLength">
+			</div>
+			<div *ngIf="canShowErrors('identification')">
+				<p severity="error" text="Los Apellidos son requeridos" *ngIf="newForm.controls['identification'] && newForm.controls['identification'].errors['required']"></p>
+				<p severity="error" text="Solo debe ingresar letras sin tildes" *ngIf="newForm.controls['identification'] && newForm.controls['identification'].errors['pattern']"></p>
+				<p severity="error" text="Debe tener m&aacute;ximo 50 caracteres" *ngIf="newForm.controls['identification'] && newForm.controls['identification'].errors['maxlength']"></p>
+			</div>
+			<div class="col">
+				<label for="new">Fecha de Nacimiento</label>
+				<input type="date" class="form-control" formControlName="dateBirthday">
+			</div>
+			<div class="col">
+				<label for="new">Número de Camiseta</label>
+				<input type="number" class="form-control" formControlName="numberShirt">
+			</div>
+			<div class="col">
+				<label for="new">Equipo</label>
+				<select class="form-control" formControlName="idTeam">
+                    <option *ngFor="let team of teams" [ngValue]="team.idTeam">
+                        {{ team.idTeam }} {{ team.nameTeam }}
+                    </option>
+                  </select>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Guardar</button>
+		<button type="button" class="btn btn-dark" (click)="back()">Regresar</button>
+		<!--button type="button" class="btn btn-danger" (click)="deleteUser()">Eliminar</button-->
+	</form>
+
+</div>
+<app-footer></app-footer>

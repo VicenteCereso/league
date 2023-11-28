@@ -1,6 +1,65 @@
-<nav class="navbar navbar-dark bg-dark">
+<!--nav class="navbar navbar-dark bg-dark">
     <span class="navbar-text">
         Liga
     </span>
   </nav>
-<br><br>
+<br><br-->
+<div class="shadow position-fixed top-0 w-100">
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand px-3" href="#">
+        <img src="assets/logo-liga-interbancaria.png" height="68" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto ">
+
+          <!--li class="nav-item px-4 py-2 text-center ">
+            <a class="nav-link mx-2" aria-current="page" (click)="games()"  >
+              <div class="style1">GAMES</div>
+              <div class="style2">SEASON 1</div>
+            </a>
+          </li-->
+
+          <li class="nav-item px-4 py-2 text-center position-relative hasSubMenu">
+            <a class="nav-link mx-2" aria-current="page" href="#">
+              <div class="style1">GAMES</div>
+              <!--div class="style2">YEAR 2022</div-->
+            </a>
+            <div class="customSubMenu">
+              <div class="subLink"><a (click)="games()" ><i class="fa-solid fa-futbol me-1" ></i> Games</a></div>
+              <div class="subLink"><a href="#"><i class="fa-solid fa-futbol me-1"></i> Feban Alex</a></div>
+              <div class="subLink"><a href="#"><i class="fa-solid fa-futbol me-1"></i> Gomez Andres</a></div>
+              <div class="subLink"><a href="#"><i class="fa-solid fa-futbol me-1"></i> Xobile! Bix</a></div>
+              <div class="subLink"><a href="#"><i class="fa-solid fa-futbol me-1"></i> Andrew Posta</a></div>
+            </div>
+          </li>
+          
+          <li class="nav-item px-4 py-2 text-center">
+            <a class="nav-link mx-2" aria-current="page" (click)="teams()">
+              <div class="style1">TEAMS</div>
+              <!--div class="style2">Mr. G</div-->
+            </a>
+          </li>
+          <li class="nav-item px-4 py-2 text-center">
+            <a class="nav-link mx-2" aria-current="page" (click)="players()">
+              <div class="style1">PLAYERS</div>
+              <!--div class="style2">CAMPAIGN</div-->
+            </a>
+          </li>
+          <li class="nav-item px-4 py-2 text-center">
+            <a class="nav-link mx-2" aria-current="page" href="#">
+              <div class="style1">CONTACT</div>
+              <!--div class="style2">OFFICE</div-->
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<br><br><br><br>
