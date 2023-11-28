@@ -1,30 +1,46 @@
+<app-header></app-header>
 
 <div class="container">
   <h3>Lista de Jugadores</h3>
   <button type="button" class="btn btn-primary" (click)="newPlayer()" >Agregar Jugador</button>
+  <form [formGroup]="filterForm">
+    <div class="col-2">
+      <div class="col">
+        <label for="new" class="title-label">Equipo</label>
+        <select class="form-control" formControlName="idTeam" (change)="searchPlayerForTeam()">
+                    <option *ngFor="let team of teams" [ngValue]="team.idTeam">
+                        {{ team.idTeam }} {{ team.nameTeam }}
+                    </option>
+                  </select>
+      </div>
+    </div>
+  </form>
 <table class="table table-hover">
     <caption>Lista de Jugadores</caption>
     <thead>
       <tr>
-        <th scope="col">Id</th>
+        <!--th scope="col">Id</th-->
         <th scope="col">Nombres</th>
         <th scope="col">Apellidos</th>
         <th scope="col">Identificación</th>
         <th scope="col">Fecha Nacimiento</th>
         <th scope="col">N° Camiseta</th>
+        <th scope="col">Equipo</th>
       </tr>
     </thead>
     <tbody><!---->
       <tr *ngFor="let player of players" (click)="editPlayer(player.idPlayer)" >
-        <th scope="row">{{player.idPlayer}}</th>
+        <!--th scope="row">{{player.idPlayer}}</th-->
         <td>{{player.names}}</td>
         <td>{{player.lastNames}}</td>
         <td>{{player.identification}}</td>
         <td>{{player.dateBirthday}}</td>
         <td>{{player.numberShirt}}</td>
+        <td>{{player.nameTeam}}</td>
       </tr>
 
     </tbody>
   </table>
 </div>
 
+<app-footer></app-footer>

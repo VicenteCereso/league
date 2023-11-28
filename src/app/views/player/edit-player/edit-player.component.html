@@ -1,38 +1,69 @@
 <app-header></app-header>
 <div class="container">
     <form [formGroup]="editForm" (ngSubmit)="postForm()">
-        <div class="form-group row">
-            <div class="col">
-                <label for="edit">IdPlayer</label>
-                <input type="text" class="form-control" placeholder="IdPlayer" formControlName="idPlayer">    
-            </div>
-            <div class="col">
-                <label for="edit">Nombres</label>
-                <input type="text" class="form-control" placeholder="Nombres" id="nombres" formControlName="names">    
-            </div>                       
+        <div class="grid">
+            <div class="col-6">
+                <div class="col-12 md:col-8 lg:col-4">
+                    <div class="grid">
+                        <label class="col-12 md:col-4 title-label">IdPlayer</label>
+                        <div class="col-12 md:col-8">
+                            <input type="text" class="form-control" formControlName="idPlayer" readonly>
+                        </div>
         
-            <div class="col">
-                <label for="edit">Apellidos</label>
-                <input type="text" class="form-control" placeholder="Apellidos" formControlName="lastNames">
-            </div>
-            <div class="col">
-                <label for="edit">Identificación</label>
-                <input type="text" class="form-control" placeholder="Identificación" formControlName="identification">
-            </div>
-            <div class="col">
-                <label for="edit">Fecha de Nacimiento</label>
-                <input type="text" class="form-control" placeholder="Fecha de Nacimiento" formControlName="dateBirthday">
-            </div>
-            <div class="col">
-                <label for="edit">N° Camiseta</label>
-                <input type="text" class="form-control" placeholder="#" formControlName="numberShirt">
+                        <label class="col-12 md:col-4 title-label">Nombres</label>
+                        <div class="col-12 md:col-8">
+                            <input type="text" class="form-control" id="nombres" formControlName="names">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 md:col-6 lg:col-4">
+                    <div class="grid">
+                        <label class="col-12 md:col-4 title-label">Apellidos</label>
+                        <div class="col-12 md:col-8">
+                            <input type="text" class="form-control" formControlName="lastNames">
+                        </div>
+        
+                        <label class="col-12 md:col-4 title-label">Identificación</label>
+                        <div class="col-12 md:col-8">
+                            <input type="text" class="form-control" formControlName="identification">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 md:col-6 lg:col-4">
+                    <div class="grid">
+                        <label class="col-12 md:col-2 title-label">Fecha de Nacimiento</label>
+                        <div class="col-12 md:col-4">
+                            <input type="date" class="form-control" formControlName="dateBirthday">
+                        </div>
+        
+                        <label class="col-12 md:col-2 title-label">N° Camiseta</label>
+                        <div class="col-12 md:col-4">
+                            <input type="text" class="form-control" formControlName="numberShirt">
+                        </div>
+                        <label class="col-12 md:col-2 title-label">Equipo</label>
+                        <div class="col-12 md:col-4">
+                            
+                            <select class="form-control" formControlName="idTeam">
+                                <option *ngFor="let team of teams" [ngValue]="team.idTeam" selected="team.idTeam === idTeam">
+                                    {{ team.idTeam }} {{ team.nameTeam }}
+                                </option>
+                              </select>
+                        </div>
+                    </div>
+                </div>        
             </div>
         </div>
-      
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <button type="button" class="btn btn-danger" >Eliminar</button>
         
-        
+        <div class="col-4">
+            <div class="d-grid gap-2 d-md-block">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-dark" (click)="back()">Regresar</button>
+                <button type="button" class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+     
     </form>
 
 </div>

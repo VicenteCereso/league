@@ -1,1 +1,39 @@
-<p>create-team works!</p>
+<app-header></app-header>
+
+<div class="container">
+    <div class="col-12">
+        <form [formGroup]="newTeamForm" (ngSubmit)="postTeamForm()">
+            <div class="col-6">
+                <!--label for="edit">IdTeam</label>
+                <div class="col">                    
+                    <input type="text" class="form-control" placeholder="IdTeam" formControlName="idTeam">    
+                </div-->
+                <div class="col">
+                    <label for="edit">Nombre del Equipo</label>
+                    <input type="text" class="form-control" placeholder="Nombre del Equipo" id="nombres" formControlName="nameTeam">    
+                </div>                       
+            
+            </div>
+            <div class="col-6">
+                <div class="col-6">
+                    <label for="edit">Foto</label>
+                    <input type="file" class="d-none" (change)="onPhotoSelected($event)" formControlName="imageTeam" accept="image/*" #photoInput/>
+                    <img [src]="imageTeam || 'assets/no-image.png'" class="img-fluid" alt="No Image" (click)="photoInput.click()">
+                    <!--input type="text" class="form-control" placeholder="Imagen" formControlName="image"-->
+                </div>
+                <div class="col-6">
+                    <label for="edit">Logo</label>
+                    <input type="file" class="d-none" (change)="onLogoSelected($event)" formControlName="logo" accept="image/*" #logoInput/>
+                    <img [src]="logo || 'assets/no-image.png'" class="img-fluid" alt="No Image"  (click)="logoInput.click()">
+                    <!--input type="email" class="form-control" placeholder="Logo" formControlName="logo"-->
+                </div>
+
+            </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-dark" (click)="back()">Regresar</button>
+            
+            
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>

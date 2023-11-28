@@ -32,4 +32,8 @@ export class TeamComponent implements OnInit{
     console.log("team id-> "+editTeam);
     this.router.navigate(['editTeam',editTeam]);
   }
+
+  createTeam(){
+    this.router.navigate(['teamCreate']);
+  }
 }

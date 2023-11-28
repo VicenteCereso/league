@@ -1,3 +1,5 @@
+import { Archivo } from "./Archivo";
+
 export class Team{
 
     static teamForJson(obj:Object){
@@ -13,7 +15,6 @@ export class Team{
         public idTeam:number,
         public nameTeam: string,
         public imageTeam: ImageBitmap,
-        public logo: ImageBitmap,
+        public logo: ImageBitmap,//ImageBitmap
     ){}
-
 }

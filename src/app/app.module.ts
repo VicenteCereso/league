@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './plantillas/header/header.component';
 import { FooterComponent } from './plantillas/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http'
-
 import{ReactiveFormsModule,FormsModule}from '@angular/forms';
 import { UserComponent } from './views/user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,8 +16,17 @@ import { PlayerComponent } from './views/player/player.component';
 import { EditComponent } from './views/edit/edit.component';
 import { EditTeamComponent } from './views/team/edit-team/edit-team.component';
 import { EditPlayerComponent } from './views/player/edit-player/edit-player.component';
-import { CreateComponent } from './views/player/create/create.component';
+import { CreatePlayerComponent } from './views/player/create-player/create-player.component';
 import { CreateTeamComponent } from './views/team/create-team/create-team.component';
+import { DatePipe } from '@angular/common';
+import { GamesComponent } from './views/matches/games/games.component';
+import { SchedulesComponent } from './views/matches/schedules/schedules.component';
+import { NewSchedulesComponent } from './views/matches/schedules/new-schedules/new-schedules.component';
+import { NewGameComponent } from './views/matches/games/new-game/new-game.component';
+import { EditGameComponent } from './views/matches/games/edit-game/edit-game.component';
+import { EditSchedulesComponent } from './views/matches/schedules/edit-schedules/edit-schedules.component';
+import { SidebarComponent } from './plantillas/sidebar/sidebar.component';
+import { ResultsComponent } from './views/results/results.component';
 
 
 @NgModule({
@@ -33,8 +41,17 @@ import { CreateTeamComponent } from './views/team/create-team/create-team.compon
     EditComponent,
     EditTeamComponent,
     EditPlayerComponent,
-    CreateComponent,
-    CreateTeamComponent
+    CreatePlayerComponent,
+    CreateTeamComponent,
+    GamesComponent,
+    SchedulesComponent,
+    NewSchedulesComponent,
+    NewGameComponent,
+    EditGameComponent,
+    EditSchedulesComponent,
+    SidebarComponent,
+    ResultsComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -45,7 +62,7 @@ import { CreateTeamComponent } from './views/team/create-team/create-team.compon
     BrowserAnimationsModule,
     ToastrModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

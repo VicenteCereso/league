@@ -1,0 +1,23 @@
+<app-header></app-header>
+<div class="container">
+    <h3>Lista de Horarios</h3>
+  <button type="button" class="btn btn-primary" (click)="newSchedule()" >Agregar Horario</button>
+<table class="table table-hover">
+    <caption>Lista de Horarios</caption>
+    <thead>
+      <tr>
+        <!--th scope="col">Fecha</th-->
+        <th scope="col">Hora Inicio</th>
+        <th scope="col">Hora Fin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let schedule of schedules" (click)="editSchedules(schedule.idSchedules)">
+        <!--th scope="row">{{schedule.dateProgram.substr(0,10)}}</th-->
+        <td>{{schedule.timeInit.substr(11,17)}}</td>
+        <td>{{schedule.timeFinish.substr(11,17)}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-footer></app-footer>

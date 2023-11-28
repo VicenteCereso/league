@@ -1,8 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Player } from 'src/app/models/player';
-import { ApiService } from 'src/app/services/api/api.service';
+import { Player } from '../../models/player';
+import { Team } from '../../models/team';
+import { ApiService } from '../../services/api/api.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-player',
@@ -11,10 +13,25 @@ import { ApiService } from 'src/app/services/api/api.service';
 })
 export class PlayerComponent {
   public players:Player[]=[];
-
+  teams:Team[];
   constructor(private api:ApiService, private router:Router){ }
+  filterForm= new FormGroup({
+    'idTeam': new FormControl(''),
+  });
+
+
   ngOnInit(): void {
-    this.api.getAllPlayers().subscribe(datos=>{
+    this.api.getAllTeams().subscribe(data=> {
+      this.teams = data;      
+    },
+    (err: HttpErrorResponse) => {
+      if (err.error instanceof Error) {
+        console.log("Client-side error: "+err.error.message);
+      } else {
+        console.log("Server-side error: "+err.error.message);
+      }
+    } )
+    this.api.getAllPlayersForTeam(this.filterForm.controls['idTeam'].value).subscribe(datos=>{
       this.players=datos;
     },
     (err: HttpErrorResponse) => {
@@ -34,5 +51,18 @@ export class PlayerComponent {
   newPlayer(){
     console.log("yendo a crear");
     this.router.navigate(['playerCreate']);
+  }
+
+  searchPlayerForTeam(){
+    this.api.getAllPlayersForTeam(this.filterForm.controls['idTeam'].value).subscribe(datos=>{
+      this.players=datos;
+    },
+    (err: HttpErrorResponse) => {
+      if (err.error instanceof Error) {
+        console.log("Client-side error: "+err.error.message);
+      } else {
+        console.log("Server-side error: "+err.error.message);
+      }
+    })
   }
 }

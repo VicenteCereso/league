@@ -49,8 +49,8 @@ export class EditTeamComponent implements OnInit{
     })
   }
   postForm(){
-    this.setTeam();
-    this.api.getUpdateTeam(this.dataTeam).subscribe(data=>{
+    //this.setTeam();
+    this.api.updateTeam(this.editForm).subscribe(data=>{
       console.log(data);
     },
       (err: HttpErrorResponse) => {
@@ -63,13 +63,13 @@ export class EditTeamComponent implements OnInit{
     );    
   }
   deleteTeam(){
-    this.api.deleteTeam(this.setTeam()).subscribe(data=>{
+    this.api.deleteTeam(this.editForm).subscribe(data=>{
       console.log(data);
     });
   }
 
   newTeam(){
-    this.api.createTeam(this.setTeam()).subscribe(data=>{
+    this.api.createTeam(this.editForm).subscribe(data=>{
       console.log(data);
     });
   }
