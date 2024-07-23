@@ -19,7 +19,7 @@ export class ApiService {
   
 // https://pokeapi.co/api/v2/pokemon/
   //url:string= "http://localhost:8080/tech";
-  url:string = "https://localhost:7182";
+  url:string= "https://localhost:7182";
 
   constructor(private http:HttpClient) { }
  
@@ -122,6 +122,12 @@ export class ApiService {
     return this.http.delete<ResponseI>(direccion,Options);
   }
 
+/* <<<<<<< HEAD
+  getAllTeams():Observable<TeamI[]>{
+    let direccion = this.url+"/team/getAll";
+    console.log("estamos ready-> "+direccion)
+    return this.http.get<TeamI[]>(direccion);
+======= */
   getAllTeams(){
     let direccion = this.url+"/team/getAll";    
     return this.http.get<ReqResTeam>(direccion)
